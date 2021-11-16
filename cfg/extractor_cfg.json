@@ -1,0 +1,22 @@
+{
+  "torch_model_path": "logs/extractor.pth",
+  "onnx_model_path": "logs/extractor.onnx",
+  "extractor_image_size": [64, 128],
+  "cuda" : true,
+  "is_letterbox_image" : true,
+
+  "Batch_size_freeze" : 1,
+  "Batch_size_nofreeze" : 1,
+  "Freeze_Epoch" : 18,
+  "Unfreeze_Epoch" : 30,
+  "Freeze_lr" : 0.001,
+  "Unfreeze_lr" : 0.0001,
+
+  "train_embed_anno_path":"dataset/helmet_embed_train_anno.txt" ,
+  "test_embed_anno_path": "dataset/helmet_embed_test_anno.txt",
+  "resume" :false,
+  "Cosine_lr" : false,
+  "mosaic" : false,
+  "is_random" : true,
+  "smooth_label" : 0.001
+}
