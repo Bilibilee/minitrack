@@ -39,7 +39,7 @@ class TorchDetection(BaseDetection):
             outputs = self.model(images_data)
         return outputs
 
-    def torch2onnx(self,batchsize=1,save_onnx_path='cfg/yolov4.onnx'):
+    def torch2onnx(self,batchsize=1,save_onnx_path='logs/yolov4.onnx'):
         w,h=self.model_image_size
         x = torch.randn(size=(batchsize, 3, h, w),dtype=torch.float32).to(self.device)
         self.model.eval() #!!!!!

@@ -27,7 +27,7 @@ class TorchExtractor(BaseExtractor):
             outputs = self.extractor(images_data)
         return outputs
 
-    def torch2onnx(self, batchsize=1,save_extractor_onnx_path='cfg/extractor.onnx'):
+    def torch2onnx(self, batchsize=1,save_extractor_onnx_path='logs/extractor.onnx'):
         w, h = self.extractor_image_size
         x = torch.randn(size=(batchsize, 3, h, w), dtype=torch.float32).to(self.device)
         self.extractor.eval()  # !!!!!

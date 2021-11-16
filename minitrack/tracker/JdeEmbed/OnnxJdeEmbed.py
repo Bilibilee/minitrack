@@ -2,7 +2,6 @@ from .BaseJdeEmbed import BaseJdeEmbed
 import onnxruntime as ort
 import numpy as np
 
-
 class OnnxJdeEmbed(BaseJdeEmbed):
     def __init__(self, track_class_names,cfg_path='cfg/jde_cfg.json'):
         super(OnnxJdeEmbed, self).__init__(track_class_names,cfg_path,'ndarray')
