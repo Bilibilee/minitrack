@@ -1,4 +1,4 @@
-from hdtrack.detection.BaseDetection import BaseDetection
+from minitrack.detection.BaseDetection import BaseDetection
 import onnxruntime as ort
 
 class OnnxDetection(BaseDetection):

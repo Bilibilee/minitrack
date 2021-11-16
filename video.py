@@ -7,9 +7,9 @@
 import time
 import cv2
 
-from hdtrack.detection import OnnxDetection,TorchDetection
-from hdtrack.tracker import EvalTracker,EvalEmbed,DeepsortTracker,JdeTracker
-from hdtrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEmbed
+from minitrack.detection import OnnxDetection,TorchDetection
+from minitrack.tracker import EvalTracker,EvalEmbed,DeepsortTracker,JdeTracker
+from minitrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEmbed
 
 embed_model=TorchSdeEmbed(['motor'])
 tracker=DeepsortTracker(embed_model)

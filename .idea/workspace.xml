@@ -2,67 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78df1a1d-5e9e-4923-8656-015739f4f4c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cfg/extractor_cfg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cfg/jde_cfg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cfg/yolov4_cfg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/dataset_mine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/generate_total_anno.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/generate_train_val_test_anno.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/helmet_detect_test_anno.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/helmet_detect_train_anno.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/helmet_embed_test_anno.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/helmet_embed_train_anno.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/kmeans_for_anchors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/detection/BaseDetection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/detection/EvalDetection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/detection/OnnxDetection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/detection/TorchDetection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/detection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/extractor/BaseExtractor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/extractor/OnnxExtractor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/extractor/TorchExtractor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/extractor/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/JDE.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/backbone/CSPdarknet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/extractor_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/head/head.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/loss/jde_loss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/loss/yolo_loss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/neck/yolo_neck.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/nets/yolov4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/BaseTracker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/DeepsortTracker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/EvalEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/EvalTracker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/BaseJdeEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/OnnxJdeEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/TorchJdeEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/JdeTracker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/BaseSdeEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/OnnxSdeEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/TorchSdeEmbed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/utils/kalman_filter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/utils/matching.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/tracker/utils/track.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/loss_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/map_tool.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/np_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/object.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hdtrack/utils/visualization.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/street.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bor.py" beforeDir="false" afterPath="$PROJECT_DIR$/bor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/detection/BaseDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/detection/BaseDetection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/detection/EvalDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/detection/EvalDetection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/detection/OnnxDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/detection/OnnxDetection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/detection/TorchDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/detection/TorchDetection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/detection/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/detection/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/extractor/BaseExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/extractor/BaseExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/extractor/OnnxExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/extractor/OnnxExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/extractor/TorchExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/extractor/TorchExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/extractor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/extractor/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/JDE.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/JDE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/backbone/CSPdarknet.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/backbone/CSPdarknet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/extractor_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/extractor_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/head/head.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/head/head.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/loss/jde_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/loss/jde_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/loss/yolo_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/loss/yolo_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/neck/yolo_neck.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/neck/yolo_neck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/nets/yolov4.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/yolov4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/BaseTracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/BaseTracker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/DeepsortTracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/DeepsortTracker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/EvalEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/EvalEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/EvalTracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/EvalTracker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/BaseJdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/BaseJdeEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/OnnxJdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/OnnxJdeEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/TorchJdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/TorchJdeEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/JdeEmbed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/JdeTracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeTracker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/BaseSdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/SdeEmbed/BaseSdeEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/OnnxSdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/SdeEmbed/OnnxSdeEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/TorchSdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/SdeEmbed/TorchSdeEmbed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/SdeEmbed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/SdeEmbed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/utils/kalman_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/utils/kalman_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/utils/matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/utils/matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/tracker/utils/track.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/utils/track.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/loss_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/loss_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/map_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/map_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/np_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/np_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/object.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/object.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdtrack/utils/visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/utils/visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/video.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +141,7 @@
       <updated>1636803174856</updated>
       <workItem from="1636803176216" duration="5516000" />
       <workItem from="1636870775230" duration="6594000" />
-      <workItem from="1637058718561" duration="1514000" />
+      <workItem from="1637058718561" duration="2092000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
-from hdtrack.utils.utils import (post_process, correct_boxes,image2Modelinput)
-from hdtrack.utils.visualization import plot_results
+from minitrack.utils.utils import (post_process, correct_boxes,image2Modelinput)
+from minitrack.utils.visualization import plot_results
 import json
-from hdtrack.utils.object import Object
+from minitrack.utils.object import Object
 import numpy as np
 
 class BaseDetection():

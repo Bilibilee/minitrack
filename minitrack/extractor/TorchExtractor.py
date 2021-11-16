@@ -1,5 +1,5 @@
 import numpy as np
-from hdtrack.nets.extractor_model import Extractor
+from minitrack.nets.extractor_model import Extractor
 import torch
 from .BaseExtractor import  BaseExtractor
 

@@ -1,12 +1,12 @@
-from hdtrack.utils.utils import image2Modelinput
+from minitrack.utils.utils import image2Modelinput
 import numpy as np
-from hdtrack.utils.dataset import TrackerDataset,tracker_dataset_collate
+from minitrack.utils.dataset import TrackerDataset,tracker_dataset_collate
 from torch.utils.data import DataLoader
 import time
 import os
 from tqdm import tqdm
 import cv2
-from hdtrack.utils.visualization import plot_results
+from minitrack.utils.visualization import plot_results
 import motmetrics as mm
 from .JdeEmbed import BaseJdeEmbed
 from .SdeEmbed import BaseSdeEmbed

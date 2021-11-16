@@ -1,11 +1,11 @@
 import torch
-from hdtrack.nets.yolov4 import YOLOv4
-from hdtrack.nets.loss.yolo_loss import YOLOLoss
+from minitrack.nets.yolov4 import YOLOv4
+from minitrack.nets.loss.yolo_loss import YOLOLoss
 import json
-from hdtrack.utils.dataset import YoloDataset
+from minitrack.utils.dataset import YoloDataset
 import numpy as np
-from hdtrack.detection.BaseDetection import BaseDetection
-from hdtrack.utils.loss_util import train_funct
+from minitrack.detection.BaseDetection import BaseDetection
+from minitrack.utils.loss_util import train_funct
 
 class TorchDetection(BaseDetection):
     def __init__(self,cfg_path='cfg/yolov4_cfg.json'):

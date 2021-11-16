@@ -1,9 +1,9 @@
 import numpy as np
 import torch
 from .BaseSdeEmbed import BaseSdeEmbed
-from hdtrack.utils.utils import image2Modelinput
-from hdtrack.detection import  TorchDetection
-from hdtrack.extractor import TorchExtractor
+from minitrack.utils.utils import image2Modelinput
+from minitrack.detection import  TorchDetection
+from minitrack.extractor import TorchExtractor
 
 class TorchSdeEmbed(BaseSdeEmbed):
     def __init__(self,track_class_names,detection=None,extrackor=None):

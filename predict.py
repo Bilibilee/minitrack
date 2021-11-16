@@ -1,7 +1,7 @@
 from PIL import Image
 import cv2
 
-from hdtrack.detection import TorchDetection
+from minitrack.detection import TorchDetection
 
 detection = TorchDetection()
 

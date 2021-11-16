@@ -1,5 +1,5 @@
 import numpy as np
-from hdtrack.utils.dataset import YoloDataset,yolo_dataset_collate,EmbedDataset,embed_dataset_collate
+from minitrack.utils.dataset import YoloDataset,yolo_dataset_collate,EmbedDataset,embed_dataset_collate
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import torch

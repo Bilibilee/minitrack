@@ -1,9 +1,9 @@
 import torch.nn as nn
 import torch
-from hdtrack.nets.backbone.CSPdarknet import CSPDarkNet
-from hdtrack.nets.neck.yolo_neck import Yolo_Neck
-from hdtrack.nets.head.head import yolo_head,embed_head
-from hdtrack.utils.utils import generator_anchors
+from minitrack.nets.backbone.CSPdarknet import CSPDarkNet
+from minitrack.nets.neck.yolo_neck import Yolo_Neck
+from minitrack.nets.head.head import yolo_head,embed_head
+from minitrack.utils.utils import generator_anchors
 from torch.jit.annotations import List,Tuple
 
 def head_process(features,model_image_size,num_anchors,anchors,embedding_dim):

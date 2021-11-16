@@ -2,9 +2,9 @@
 import torch
 from PIL import Image
 
-from hdtrack.detection import OnnxDetection,TorchDetection
-from hdtrack.tracker import EvalTracker,EvalEmbed,DeepsortTracker
-from hdtrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEmbed
+from minitrack.detection import OnnxDetection,TorchDetection
+from minitrack.tracker import EvalTracker,EvalEmbed,DeepsortTracker
+from minitrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEmbed
 
 embed=OnnxSdeEmbed(['motor'])
 tracker=DeepsortTracker(embed)

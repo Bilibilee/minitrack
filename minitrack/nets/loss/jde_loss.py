@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import math
 import torch.nn.functional as F
-from hdtrack.utils.utils import torch_box_iou
-from hdtrack.utils.loss_util import box_ciou,LogSoftmaxLoss,BCELoss,get_smooth_labels
+from minitrack.utils.utils import torch_box_iou
+from minitrack.utils.loss_util import box_ciou,LogSoftmaxLoss,BCELoss,get_smooth_labels
 from ..JDE import head_process
 
 class JDELoss(nn.Module):

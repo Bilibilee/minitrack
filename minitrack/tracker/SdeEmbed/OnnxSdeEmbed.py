@@ -1,8 +1,8 @@
 import numpy as np
 from .BaseSdeEmbed import BaseSdeEmbed
-from hdtrack.utils.utils import image2Modelinput
-from hdtrack.extractor import OnnxExtractor
-from hdtrack.detection import OnnxDetection
+from minitrack.utils.utils import image2Modelinput
+from minitrack.extractor import OnnxExtractor
+from minitrack.detection import OnnxDetection
 
 
 class OnnxSdeEmbed(BaseSdeEmbed):

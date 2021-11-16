@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
-from hdtrack.utils.utils import torch_box_iou
+from minitrack.utils.utils import torch_box_iou
 from ..yolov4 import head_process
-from hdtrack.utils.loss_util import box_ciou,LogSoftmaxLoss,BCELoss,get_smooth_labels
+from minitrack.utils.loss_util import box_ciou,LogSoftmaxLoss,BCELoss,get_smooth_labels
 
 class YOLOLoss(nn.Module):
     def __init__(self, anchors,anchors_shape,num_classes,num_anchors,num_features,model_image_size,device,label_smooth=0, mean=False):

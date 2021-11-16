@@ -1,8 +1,8 @@
 import numpy as np
 from .utils.kalman_filter import KalmanFilter
 from .utils.track import Track
-from hdtrack.utils.visualization import plot_results
-from hdtrack.utils.object import Object
+from minitrack.utils.visualization import plot_results
+from minitrack.utils.object import Object
 
 class BaseTracker:
     def __init__(self, embed_model,max_age, n_init):

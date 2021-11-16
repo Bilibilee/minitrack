@@ -1,2 +1,2 @@
-# hdtrack
+# minitrack
 multi object track

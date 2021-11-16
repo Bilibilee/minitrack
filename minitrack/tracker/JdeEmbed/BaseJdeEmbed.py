@@ -1,7 +1,7 @@
-from hdtrack.utils.utils import (post_process_embed, correct_boxes)
-from hdtrack.utils.object import Object
+from minitrack.utils.utils import (post_process_embed, correct_boxes)
+from minitrack.utils.object import Object
 import numpy as np
-from hdtrack.detection import BaseDetection
+from minitrack.detection import BaseDetection
 
 class BaseJdeEmbed(BaseDetection):
     def __init__(self,track_class_names,cfg_path,type_modelinput):

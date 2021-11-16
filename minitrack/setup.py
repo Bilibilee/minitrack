@@ -2,7 +2,7 @@ import setuptools
 
 
 setuptools.setup(
-    name="hdtrack",
+    name="minitrack",
     version="0.1",
     author="danfeng li",
     description="multi object track",

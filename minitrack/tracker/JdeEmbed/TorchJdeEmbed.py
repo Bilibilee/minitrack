@@ -1,10 +1,10 @@
-from hdtrack.nets.JDE import JDE
+from minitrack.nets.JDE import JDE
 from .BaseJdeEmbed import BaseJdeEmbed
 import torch
-from hdtrack.nets.loss.jde_loss import JDELoss
+from minitrack.nets.loss.jde_loss import JDELoss
 import json
-from hdtrack.utils.loss_util import train_funct
-from hdtrack.utils.dataset import MutiltaskDataset
+from minitrack.utils.loss_util import train_funct
+from minitrack.utils.dataset import MutiltaskDataset
 import numpy as np
 
 class TorchJdeEmbed(BaseJdeEmbed):

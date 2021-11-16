@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.spatial.distance import cdist
 import lap
-from hdtrack.utils.np_util import np_box_iou
+from minitrack.utils.np_util import np_box_iou
 from .kalman_filter import chi2inv95
 
 

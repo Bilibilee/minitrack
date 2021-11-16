@@ -1,8 +1,8 @@
-from hdtrack.utils.utils import (post_process, correct_boxes)
-from hdtrack.utils.object import Object
+from minitrack.utils.utils import (post_process, correct_boxes)
+from minitrack.utils.object import Object
 import numpy as np
-from hdtrack.utils.utils import image2Modelinput
-from hdtrack.utils.visualization import plot_results
+from minitrack.utils.utils import image2Modelinput
+from minitrack.utils.visualization import plot_results
 
 class BaseSdeEmbed():
     def __init__(self,detection,extractor,track_class_names):

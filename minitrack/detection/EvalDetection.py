@@ -1,13 +1,13 @@
-from hdtrack.utils.utils import (post_process,image2Modelinput)
-from hdtrack.utils.visualization import plot_results
+from minitrack.utils.utils import (post_process,image2Modelinput)
+from minitrack.utils.visualization import plot_results
 import numpy as np
-from hdtrack.utils.dataset import YoloDataset,yolo_dataset_collate
+from minitrack.utils.dataset import YoloDataset,yolo_dataset_collate
 from torch.utils.data import DataLoader
 import time
 import os
 from tqdm import tqdm
 import cv2
-from hdtrack.utils.map_tool import Map_Analysis
+from minitrack.utils.map_tool import Map_Analysis
 import warnings
 
 class EvalDetection():
