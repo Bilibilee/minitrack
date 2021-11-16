@@ -31,14 +31,14 @@ motmetrics
 
 lapjv
 
-##目标检测
-###配置
+## 目标检测
+### 配置
 配置文件在cfg/yolov4_cfg.json，class_names即为模型对应的类别名称
 
 onnx_model_path指定onnx模型地址，torch_model_path指定pytorch模型地址
 
 model_image_size为推理以及训练时的模型输入大小，要求为32的倍数
-###推理
+### 推理
 借鉴torchvision faster rcnn，nms采用batch nms，对不同类别框同时处理
 ```python
 from PIL import Image
@@ -53,7 +53,7 @@ result=detect.detect_one_image(image,draw=True) # 返回opencv支持的numpy图�
 cv2.imshow('result',result)
 ```
 
-###训练
+### 训练
 迁移学习，先冻结backbone，再训练。
 
 需配置anno文件，格式为[path] [x1,y1,x2,y2,label,track_id]
@@ -67,7 +67,7 @@ detect=TorchDetection(cfg_path='cfg/yolov4_cfg.json')
 detect.train()
 ```
 
-###验证
+### 验证
 ```python
 from PIL import Image
 
@@ -80,7 +80,7 @@ eval_detect=EvalDetection(detection=detect)
 eval_detect.test_fps(image,test_interval=20) # 测试fps
 eval_detect.test_map(anno_path='dataset/helmet_detect_test_anno.txt',Batchsize=4) # 测试mAP，结果保存在results
 ```
-###转换为onnx
+### 转换为onnx
 ```python
 from PIL import Image
 from minitrack.detection import TorchDetection
@@ -88,7 +88,7 @@ from minitrack.detection import TorchDetection
 detect=TorchDetection(cfg_path='cfg/yolov4_cfg.json')
 detect.torch2onnx(batchsize=1,save_onnx_path='logs/yolov4.onnx')
 ```
-##多目标跟踪SDE
+## 多目标跟踪SDE
 借鉴JDE，对Deepsort的数据关联策略做了几项改动
 
 1.计算外观距离矩阵时，采用指数加权平均
@@ -97,7 +97,7 @@ detect.torch2onnx(batchsize=1,save_onnx_path='logs/yolov4.onnx')
 
 readme未完待续
 
-##参考
+## 参考
 https://github.com/Cartucho/mAP  
 https://github.com/ZQPei/deep_sort_pytorch
 https://github.com/bubbliiiing/yolov4-pytorch

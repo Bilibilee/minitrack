@@ -4,12 +4,6 @@
     <list default="true" id="78df1a1d-5e9e-4923-8656-015739f4f4c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minitrack/detection/TorchDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/detection/TorchDetection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minitrack/extractor/TorchExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/extractor/TorchExtractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minitrack/nets/extractor_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/nets/extractor_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/OnnxJdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/OnnxJdeEmbed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/TorchJdeEmbed.py" beforeDir="false" afterPath="$PROJECT_DIR$/minitrack/tracker/JdeEmbed/TorchJdeEmbed.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +120,7 @@
       <updated>1636803174856</updated>
       <workItem from="1636803176216" duration="5516000" />
       <workItem from="1636870775230" duration="6594000" />
-      <workItem from="1637058718561" duration="8017000" />
+      <workItem from="1637058718561" duration="8354000" />
     </task>
     <servers />
   </component>
