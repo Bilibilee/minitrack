@@ -1,10 +1,13 @@
 logs/*.pth
 logs/*.onnx
-
+results
+.idea
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+!.gitignore
+!results/readme.txt
 # Python:
 *.py[cod]
 *.so
