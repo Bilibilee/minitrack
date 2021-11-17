@@ -4,12 +4,17 @@ from .utils.track import Track
 from minitrack.utils.visualization import plot_results
 from minitrack.utils.object import Object
 
+
 class BaseTracker:
     def __init__(self, embed_model,max_age, n_init):
         self.max_age = max_age
         self.n_init = n_init
         self.embed_model=embed_model
         self.kalman_filter = KalmanFilter()
+        self.tracks = []
+
+    def clear(self):
+        Track.count=0
         self.tracks = []
 
     def predict(self):
@@ -39,16 +44,13 @@ class BaseTracker:
             self.tracks[track_idx].update(detectobjs[detection_idx])
 
         for track_idx in unmatched_tracks:
-            is_delete=self.tracks[track_idx].mark_missed()
-            if is_delete==True:
-                self.tracks[track_idx]=None # 利用python智能指针去做析构
-        self.tracks=list(filter(lambda x:x is not None,self.tracks))
+            self.tracks[track_idx].mark_missed()
 
+        self.tracks = [t for t in self.tracks if not t.is_deleted()]
+        # 利用python内存管理机制去析构，Update distance metric.
         for detection_idx in unmatched_detections:
             self.initiate_track(detectobjs[detection_idx])
 
-        self.tracks = [t for t in self.tracks if not t.is_deleted()]
-        # Update distance metric.
 
     def _match(self,detectobjs):
         raise NotImplementedError

@@ -6,11 +6,11 @@ class TrackState(object):
     Deleted = 3
 
 class Track():
-    _count=0
+    count=0
     @staticmethod
     def next_id():
-        Track._count += 1
-        return Track._count
+        Track.count += 1
+        return Track.count
 
     def __init__(self, ltwh, score, label, feat , kf ,max_age,n_init):
 

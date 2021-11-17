@@ -5,7 +5,8 @@ from minitrack.tracker import EvalTracker,EvalEmbed,DeepsortTracker
 from minitrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEmbed
 
 
-embed=TorchSdeEmbed(['motor'])
+
+embed=OnnxSdeEmbed(['motor'])
 tracker=DeepsortTracker(embed)
 eval=EvalTracker(tracker)
 

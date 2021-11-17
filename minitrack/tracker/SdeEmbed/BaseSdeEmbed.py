@@ -17,18 +17,18 @@ class BaseSdeEmbed():
 
     def detect_one_image(self, origin_image, draw=True):
         images_data,origin_image_shape,origin_image = image2Modelinput(origin_image,self.detection.model_image_size,self.detection.is_letterbox_image,self.detection.type_modelinput)
-        predictions = self.get_predictions(images_data, origin_image_shape,origin_image)
+        predictions = self.get_predictions(images_data, origin_image_shape,[origin_image])
         prediction = predictions[0]
         if not draw:
             return prediction
-        elif prediction == None:  # 无框直接返回原图
+        elif len(prediction)==0:  # 无框直接返回原图
             return origin_image
         else:
             return plot_results(origin_image,self.detection.class_names, prediction)
 
-    def get_predictions(self,images_data,origin_image_shape,origin_image):
+    def get_predictions(self,images_data,origin_image_shape,origin_images):
         results=self.get_detections(images_data,origin_image_shape)
-        results=self.get_embeddings(results,origin_image)
+        results=self.get_embeddings(results,origin_images)
         return results
 
     def get_embeddings(self, results, origin_image):

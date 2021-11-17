@@ -95,12 +95,13 @@ class EvalTracker():
                 split_lines[key] = [line]
 
         for key, each_lines in split_lines.items():
+            print('eval '+key)
             if not os.path.exists(save_path + key):
                 os.makedirs(save_path + key)
 
             testdataset = TrackerDataset(each_lines)
             gen = DataLoader(testdataset, batch_size=Batchsize, pin_memory=True, drop_last=True,collate_fn=tracker_dataset_collate)
-
+            self.tracker.clear()
             frame_id = 1
             hypotheses = []
             gt = []

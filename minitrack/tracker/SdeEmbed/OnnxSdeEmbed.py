@@ -11,11 +11,10 @@ class OnnxSdeEmbed(BaseSdeEmbed):
         self.extractor = extrackor if extrackor is not None else OnnxExtractor()
         super(OnnxSdeEmbed, self).__init__(self.detection,self.extractor,track_class_names)
 
-    def get_embeddings(self, results, origin_image):
+    def get_embeddings(self, results, origin_images):
         image_crops = []
-
-        for result in results:
-            if result == None:
+        for result,origin_image in zip(results,origin_images):
+            if result is None:
                 continue
             for obj in result['track']:
                 x1, y1, x2, y2 = obj.ltrb.astype(np.int32)
@@ -24,14 +23,16 @@ class OnnxSdeEmbed(BaseSdeEmbed):
                                               self.extractor.is_letterbox_image,
                                               self.extractor.type_modelinput)
                 image_crops.append(crop)
-
+        if len(image_crops) == 0:
+            return [[]] * len(origin_images)
         image_crops = np.concatenate(image_crops, axis=0)
         embeddings = self.extractor(image_crops)
 
         i = 0
         outputs = []
         for result in results:
-            if result == None:
+            if result is None:
+                outputs.append([])
                 continue
             for obj in result['track']:
                 obj.feature = embeddings[i]

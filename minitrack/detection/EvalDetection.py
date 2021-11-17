@@ -73,7 +73,7 @@ class EvalDetection():
                 # 这里只是测验map，为了简单，就不映射回原图像了，所以origin_image_shape=model_image_size*Batchsize
                 # 返回list[ dict{'ltrb':tensor(n,4),'labels':tensor(n),'scores':tensor(n)} * B ]
                 # 注意labels为整数，且labels和scores都是一维的tensor。boxes为x1,y1,x2,y2
-                # 当没有预测框时，为None
+                # 当没有预测框时，为[]
 
                 for prediction, target, image_data in zip(predictions, targets, images_data):
                     target = target if isinstance(target,np.ndarray) else target.cpu().numpy()
@@ -112,7 +112,7 @@ class EvalDetection():
                     f.write('\n')
 
                     # 保存图片
-                    if img_id % save_image_interval == 0 and prediction != None:  # 每隔20张存储
+                    if img_id % save_image_interval == 0 and len(prediction)!=0:  # 每隔20张存储
                         image = plot_results(image, self.class_names, prediction)
                         cv2.imwrite(save_path + "/images/" + str(img_id) + ".jpg", image)
                     img_id += 1

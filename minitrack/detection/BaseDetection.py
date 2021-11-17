@@ -60,7 +60,7 @@ class BaseDetection():
         prediction = predictions[0]
         if not draw:
             return prediction
-        elif prediction == None:  # 无框直接返回原图
+        elif len(prediction)==0:  # 无框直接返回原图
             return origin_image
         else:
             return plot_results(origin_image,self.class_names, prediction)
