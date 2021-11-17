@@ -6,9 +6,10 @@ from minitrack.utils.object import Object
 
 
 class BaseTracker:
-    def __init__(self, embed_model,max_age, n_init):
+    def __init__(self, embed_model,max_age, n_init,budget):
         self.max_age = max_age
         self.n_init = n_init
+        self.budget=budget # centers轨迹跟踪的容量
         self.embed_model=embed_model
         self.kalman_filter = KalmanFilter()
         self.tracks = []
@@ -33,7 +34,7 @@ class BaseTracker:
 
 
     def initiate_track(self, obj):
-        self.tracks.append(Track(obj.ltwh, obj.score, obj.label, obj.feature,self.kalman_filter,self.max_age,self.n_init))
+        self.tracks.append(Track(obj.ltwh, obj.score, obj.label, obj.feature,self.kalman_filter,self.max_age,self.n_init,self.budget))
 
     def update(self, detectobjs):
 
@@ -68,7 +69,7 @@ class BaseTracker:
             if not track.is_confirmed() or track.time_since_update > 1:
                 continue
                 # box,box_type,label,score,embed=None,track_id=None):
-            obj=Object(track.ltwh,'ltwh',track.label,track.score,track_id=track.track_id)
+            obj=Object(track.ltwh,'ltwh',track.label,track.score,track_id=track.track_id,centers=track.centers)
             outputs.append(obj)
         outputs.extend(unneedtrack_objs)
         if not draw:

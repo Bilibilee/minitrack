@@ -2,8 +2,8 @@ from .BaseTracker import BaseTracker
 from .utils.matching import *
 
 class DeepsortTracker(BaseTracker):
-    def __init__(self, embed_model,max_iou_distance=0.7,max_cosine_distance=0.7,max_age=70, n_init=3):
-        super(DeepsortTracker, self).__init__(embed_model,max_age,n_init)
+    def __init__(self, embed_model,max_iou_distance=0.7,max_cosine_distance=0.7,max_age=70, n_init=3,budget=30):
+        super(DeepsortTracker, self).__init__(embed_model,max_age,n_init,budget)
 
         self.max_iou_distance = max_iou_distance
         self.max_cosine_distance = max_cosine_distance

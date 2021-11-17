@@ -33,10 +33,10 @@ while(True):
     fps  = ( fps + (1./(time.time()-t1)) ) / 2
     print("fps= %.2f"%(fps))
     #frame = cv2.putText(frame, "fps= %.2f"%(fps), (0, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-    cv2.imwrite('./results/'+str(frame_id)+'.jpg',frame)
-    frame_id+=1
-    #cv2.namedWindow("video",cv2.WINDOW_AUTOSIZE)
-    #cv2.imshow("video",frame)
+    #cv2.imwrite('./results/'+str(frame_id)+'.jpg',frame)
+    #frame_id+=1
+    cv2.namedWindow("video",cv2.WINDOW_AUTOSIZE)
+    cv2.imshow("video",frame)
 
     c= cv2.waitKey(1) & 0xff # 每隔1ms捕获键盘
     if c==27: # 27是esc键

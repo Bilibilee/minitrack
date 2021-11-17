@@ -8,7 +8,7 @@ def get_color(idx):
     return color
 
 
-def plot_results(image,class_names,prediction,is_print=False,color='rgb'):
+def plot_results(image,class_names,prediction,is_print=False,color='rgb',draw_center_upper=-10):
     # 把bbox画在原图片上
     # is_print 表示是否打印出label和box值
     origin_image_shape = image.shape
@@ -25,11 +25,17 @@ def plot_results(image,class_names,prediction,is_print=False,color='rgb'):
 
         left,top,right,bottom = obj.ltrb.astype(np.int32)
         if obj.track_id is  None:
-            label_text ='{}'.format(predicted_class)  # '{} {:.2f}'.format(predicted_class, score)
+            label_text ='{} {:.2f}'.format(predicted_class, score)
             color = get_color(class_names.index(predicted_class))
         else:
             label_text = '{} ID-{}'.format(predicted_class, obj.track_id)
             color = get_color(obj.track_id)
+
+        if obj.centers is not None:
+            draw_center_lower = max(-len(obj.centers),draw_center_upper)+1
+            for i in range(-1,draw_center_lower,-1):
+                image = cv2.line(image, obj.centers[i], obj.centers[i-1],color, thickness)
+
         label_size=cv2.getTextSize(label_text,cv2.FONT_HERSHEY_SIMPLEX,fontScale=fontscale,thickness=thickness)
         if is_print==True:
             print(predicted_class, top, left, bottom, right)

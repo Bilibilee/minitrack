@@ -1,6 +1,6 @@
 import numpy as np
 class Object():
-    def __init__(self, box,box_type,label,score,embed=None,track_id=None):
+    def __init__(self, box,box_type,label,score,embed=None,track_id=None,centers=None):
         if box_type!='ltrb' and box_type!='ltwh':
             raise ValueError("box_type must be 'ltrb' or 'ltwh' ")
 
@@ -15,6 +15,7 @@ class Object():
         self.feature=embed
 
         self.track_id= track_id
+        self.centers=centers
 
     @property
     def feature(self):

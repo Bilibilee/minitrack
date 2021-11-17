@@ -12,7 +12,7 @@ class Track():
         Track.count += 1
         return Track.count
 
-    def __init__(self, ltwh, score, label, feat , kf ,max_age,n_init):
+    def __init__(self, ltwh, score, label, feat , kf , max_age , n_init , budget):
 
         self._ltwh = np.asarray(ltwh, dtype=np.float32)
         self.label = label
@@ -25,6 +25,9 @@ class Track():
         self.smooth_feat = None
         self.update_features(feat)
         self.track_id = self.next_id()  # stastic method
+
+        self.centers = [(int(self.mean[0]),int(self.mean[1]))]
+        self.budget = budget
 
         self.alpha = 0.9
         self.hits = 1
@@ -42,11 +45,9 @@ class Track():
 
     def predict(self):
         self.time_since_update += 1
-        #mean_state = self.mean.copy()
-        #if self.time_since_update > 1:
-        #    mean_state[7] = 0
+
         self.mean, self.covariance = self.kalman_filter.predict(self.mean, self.covariance)
-        #print('mean',self.mean,'covariance',self.covariance)
+
 
     def update(self, detecttrack):
         self.hits += 1
@@ -56,8 +57,13 @@ class Track():
 
         self.mean, self.covariance = self.kalman_filter.update(self.mean, self.covariance, detecttrack.xyah)
 
+        self.centers.append((int(self.mean[0]),int(self.mean[1])))
+        if self.budget is not None:
+            self.centers = self.centers[-self.budget:]
+
         self.score = detecttrack.score
         self.update_features(detecttrack.feature)
+
     def mark_missed(self):
         if self.state == TrackState.Tentative:
             self.state = TrackState.Deleted
