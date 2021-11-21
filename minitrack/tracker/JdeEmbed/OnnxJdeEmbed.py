@@ -3,8 +3,8 @@ import onnxruntime as ort
 import numpy as np
 
 class OnnxJdeEmbed(BaseJdeEmbed):
-    def __init__(self, track_class_names,cfg_path='cfg/jde_cfg.json'):
-        super(OnnxJdeEmbed, self).__init__(track_class_names,cfg_path,'ndarray')
+    def __init__(self, track_class_name,abnormal_class_name,cfg_path='cfg/jde_cfg.json'):
+        super(OnnxJdeEmbed, self).__init__(track_class_name,abnormal_class_name,cfg_path,'ndarray')
 
     def initialize(self, cfg):
         self.num_features = len(cfg['strides'])

@@ -12,22 +12,30 @@ class Track():
         Track.count += 1
         return Track.count
 
-    def __init__(self, ltwh, score, label, feat , kf , max_age , n_init , budget):
+    def __init__(self, ltwh, score, label, feat , abnormal_class_image, kf , max_age , n_init , budget,max_save_image_num):
 
         self._ltwh = np.asarray(ltwh, dtype=np.float32)
         self.label = label
         self.score = score
-
+        self.track_id = self.next_id()  # stastic method
         self.kalman_filter=kf
+        self.state = TrackState.Tentative
+
         self.mean, self.covariance =self.kalman_filter.initiate(self.ltwh_to_xyah(self._ltwh))
 
-        self.state=TrackState.Tentative
         self.smooth_feat = None
         self.update_features(feat)
-        self.track_id = self.next_id()  # stastic method
 
         self.centers = [(int(self.mean[0]),int(self.mean[1]))]
         self.budget = budget
+
+        self.cur_NoHelmet_save_image_num = 0
+        self.cur_WrongDirect_save_image_num = 0
+        self.cur_RunRed_save_image_num = 0
+        self.max_save_image_num = max_save_image_num
+
+        self.abnormal_class_image=None
+        self.update_abnormal_class_image(abnormal_class_image)
 
         self.alpha = 0.9
         self.hits = 1
@@ -43,26 +51,37 @@ class Track():
             # 指数加权平均
         self.smooth_feat /= np.linalg.norm(self.smooth_feat)  # 默认2范式
 
+    def update_centers(self,center):
+        self.centers.append(center)
+        if self.budget is not None:
+            self.centers = self.centers[-self.budget:]
+
+    def update_abnormal_class_image(self,abnormal_class_image):
+        if abnormal_class_image is None:
+            return False
+        if self.cur_NoHelmet_save_image_num >= self.max_save_image_num:
+            self.abnormal_class_image = None
+            return False
+        self.abnormal_class_image = abnormal_class_image
+        return True
+
     def predict(self):
         self.time_since_update += 1
 
         self.mean, self.covariance = self.kalman_filter.predict(self.mean, self.covariance)
 
 
-    def update(self, detecttrack):
+    def update(self, detectobj):
         self.hits += 1
         self.time_since_update = 0
         if self.state == TrackState.Tentative and self.hits >= self._n_init:
             self.state = TrackState.Confirmed
+        self.score = detectobj.score
+        self.mean, self.covariance = self.kalman_filter.update(self.mean, self.covariance, detectobj.xyah)
 
-        self.mean, self.covariance = self.kalman_filter.update(self.mean, self.covariance, detecttrack.xyah)
-
-        self.centers.append((int(self.mean[0]),int(self.mean[1])))
-        if self.budget is not None:
-            self.centers = self.centers[-self.budget:]
-
-        self.score = detecttrack.score
-        self.update_features(detecttrack.feature)
+        self.update_centers((int(self.mean[0]), int(self.mean[1])))
+        self.update_features(detectobj.feature)
+        self.update_abnormal_class_image(detectobj.abnormal_class_image)
 
     def mark_missed(self):
         if self.state == TrackState.Tentative:

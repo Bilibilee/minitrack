@@ -1,9 +1,3 @@
-#-------------------------------------#
-#   调用摄像头或者视频进行检测
-#   调用摄像头直接运行即可
-#   调用视频可以将cv2.VideoCapture()指定路径
-#   视频的保存并不难，可以百度一下看看
-#-------------------------------------#
 import time
 import cv2
 
@@ -11,13 +5,11 @@ from minitrack.detection import OnnxDetection,TorchDetection
 from minitrack.tracker import EvalTracker,EvalEmbed,DeepsortTracker,JdeTracker
 from minitrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEmbed
 
-embed_model=TorchSdeEmbed(['motor'])
-tracker=DeepsortTracker(embed_model)
-#-------------------------------------#
+embed=TorchSdeEmbed('motor','nohelmet')
+track=DeepsortTracker(embed)
 #   调用摄像头
 #   capture=cv2.VideoCapture("1.mp4")
-#-------------------------------------#
-capture=cv2.VideoCapture("D:/Dataset/indian_cctv_motor_helmet/c1.avi")
+capture=cv2.VideoCapture("D:/Dataset/indian_cctv_motor_helmet/b3.avi")
 fps = 0.0
 frame_id=0
 while(True):
@@ -27,7 +19,7 @@ while(True):
     # 格式转变，BGRtoRGB
     frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     # 进行检测
-    frame = tracker.track_one_image(frame)
+    frame = track.track_one_image(frame,right_direction='y+')
     # RGBtoBGR满足opencv显示格式
 
     fps  = ( fps + (1./(time.time()-t1)) ) / 2

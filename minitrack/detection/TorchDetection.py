@@ -8,8 +8,8 @@ from minitrack.detection.BaseDetection import BaseDetection
 from minitrack.utils.loss_util import train_funct
 
 class TorchDetection(BaseDetection):
-    def __init__(self,cfg_path='cfg/yolov4_cfg.json'):
-        super(TorchDetection, self).__init__(cfg_path,'tensor')
+    def __init__(self,track_class_name,abnormal_class_name,cfg_path='cfg/yolov4_cfg.json'):
+        super(TorchDetection, self).__init__(track_class_name,abnormal_class_name,cfg_path,'tensor')
         self.output_names=['xywh','det_conf','cls_conf']
 
     def initialize(self,cfg):

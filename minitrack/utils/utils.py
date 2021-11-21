@@ -2,16 +2,43 @@ import numpy as np
 import cv2
 import torch
 from torchvision.ops import nms
-import time
 import math
 from .np_util import np_nms
+from .np_util import np_box_iou
+
+def match_abnormal_and_track(result,origin_image,match_iou_threshold,scale_w=0.5,scale_h=0.25):
+        # nohelmet和motor匹配，根据IOU，
+        if len(result['track'])==0 or len(result['abnormal'])==0:
+            return result
+
+        track=[]
+        abnormal=[]
+        for obj in result['track']:
+            track.append(obj.ltrb)
+        for obj in result['abnormal']:
+            abnormal.append(obj.ltrb)
+
+        track=np.vstack(track)
+        w=track[:,2]-track[:,0]
+        h=track[:,3]-track[:,1]
+        track[:,0]=track[:,0]+(1-scale_w)*w/2
+        track[:,2]=track[:,2]-(1-scale_w)*w/2
+        track[:,3]=track[:,1]+scale_h*h
+
+        abnormal=np.vstack(abnormal)
+        ious = np_box_iou(track,abnormal)
+
+        track_indices = np.argmax(ious, axis=0)
+        max_ious = np.max(ious, axis=0)
+        for indice,max_iou,abnormal_obj in zip(track_indices,max_ious,result['abnormal']):
+            if max_iou < match_iou_threshold:
+                continue
+            x1,y1,x2,y2=abnormal_obj.ltrb.astype(np.int32)
+            result['track'][indice].abnormal_class_image=origin_image[y1:y2, x1:x2, :]
+
+        return result
 
 def generator_anchors(num_anchors,num_features,features_shape,model_image_size,anchors_shape,device):
-    # features: tuple( 3*tensor[bs,3*(5+num_classes),13,13] )
-    # anchors_shape:tensor(levels,A,2), A表示每个grid生成A个anchors,levels表示levels个特征图
-    # anchors_shape的size从大到小，features的size从小到大，正好一一对应
-    # 输出：tensor(levels*H*W*A,4)
-
     anchors_return =[]
     for i in range(num_features):
         feature_h = features_shape[i][1]
@@ -138,10 +165,7 @@ def torch_box_iou(_box_a, _box_b,x1y1x2y2=False):
     union = area_a + area_b - inter
     return inter / union  # [A,B]
 
-
 def post_process(predictions, conf_thres=0.5, nms_thres=0.4):
-    # 输入prediction:tensor[batch_size, num_boxes, 5+numclasses],xywh格式
-    # nms_thres是iou的阈值
     bbox,det_conf,cls_conf=predictions
     # 先转换为左上角右下角格式，因为前向传播，inplace操作没有关系
     bbox[...,0],bbox[...,2] = bbox[...,0]-bbox[...,2]/2 , bbox[...,0]+bbox[...,2]/2
@@ -170,20 +194,14 @@ def post_process(predictions, conf_thres=0.5, nms_thres=0.4):
             output.append([per_bbox,score,class_label])
     else:
         for per_bbox, per_det_conf, per_cls_conf in zip(bbox, det_conf, cls_conf):
-            t1=time.time()
             class_conf, class_label = torch.max(per_cls_conf, dim=-1, keepdim=True)
-            t2=time.time()
             score=per_det_conf * class_conf
             conf_mask = (score>= conf_thres).squeeze()
 
-            t3=time.time()
             # 以目标置信度*类别概率，先进行第一步筛选
             per_bbox = per_bbox[conf_mask]
-            t4=time.time()
             score = score[conf_mask]
             class_label = class_label[conf_mask]
-            t5=time.time()
-            #print(t2 - t1, t3 - t2, t4 - t3, t5 - t4)
 
             if len(per_bbox)==0:
                 output.append(None)
@@ -200,8 +218,6 @@ def post_process(predictions, conf_thres=0.5, nms_thres=0.4):
 
 
 def post_process_embed(predictions, embed_mask,conf_thres=0.5, nms_thres=0.4):
-    # 输入prediction:tensor[batch_size, num_boxes, 5+numclasses],xywh格式
-    # nms_thres是iou的阈值
     bbox,det_conf,cls_conf,embed=predictions
     # 先转换为左上角右下角格式，因为前向传播，inplace操作没有关系
     bbox[...,0],bbox[...,2] = bbox[...,0]-bbox[...,2]/2 , bbox[...,0]+bbox[...,2]/2

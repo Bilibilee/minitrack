@@ -1,3 +1,5 @@
+
+'''
 from PIL import Image
 
 from minitrack.detection import OnnxDetection,TorchDetection,EvalDetection
@@ -11,7 +13,7 @@ tracker=DeepsortTracker(embed)
 eval=EvalTracker(tracker)
 
 eval.test_mota(anno_path='dataset/helmet_embed_test_anno.txt')
-'''
+
 import cv2
 import os
 fps = 10
@@ -27,4 +29,8 @@ for i in range(12, 149):
         img = cv2.imread('./results/%d.jpg' % i)
         videowriter.write(img)
 '''
+import time
+localtime = time.localtime(time.time())
 
+stra=time.strftime('%Y_%m_%d_%H_%M_%S',localtime)
+print(stra)

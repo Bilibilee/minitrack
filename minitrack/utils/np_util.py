@@ -1,6 +1,5 @@
 import torch
 import numpy as np
-from torchvision.ops import nms
 
 def np_nms(ltrb,scores,nms_threshold=0.4):
     # Sort boxes
@@ -40,10 +39,11 @@ def np_box_iou( boxes1, boxes2):
 if __name__=='__main__':
     # 百个框差别不大，千个框要0.3秒，差了十倍
     import time
+    from torchvision.ops import nms
     ltrb=np.random.rand(200,4)
     scores=np.random.rand(200,1)[:,0]
     t1=time.time()
-    keep1=numpy_nms(ltrb,scores,0.4)
+    keep1=np_nms(ltrb,scores,0.4)
     t2=time.time()
     print(t2-t1,keep1)
 

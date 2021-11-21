@@ -19,6 +19,7 @@
   "embedding_dim": 512,
   "strides":[32, 16, 8],
   "confidence" : 0.4,
+  "match_iou_threshold": 0.1,
   "iou" : 0.3,
   "cuda" : true,
   "is_letterbox_image" : true,
@@ -45,7 +46,7 @@
     "motor",
     "cyclist",
     "pedestrian",
-    "without_helmet",
+    "nohelmet",
     "helmet"
   ],
   "coco_class_names": [

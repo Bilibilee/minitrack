@@ -111,7 +111,7 @@ class EvalTracker():
                     for origin_image, target in zip(*batch):
                         if target.size==0:
                             continue
-                        objs=self.tracker.track_one_image(origin_image,draw=False)
+                        objs=self.tracker.track_one_image(origin_image,draw=False,detect_abnormal_behavior=False)
                         online_ltwhs=[]
                         online_ids=[]
                         for obj in objs:

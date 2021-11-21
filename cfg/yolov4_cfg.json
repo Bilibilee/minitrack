@@ -17,6 +17,7 @@
   "torch_model_path": "logs/yolov4_weights_helmet.pth",
   "model_image_size": [1088, 608],
   "confidence": 0.4,
+  "match_iou_threshold": 0.1,
   "iou": 0.3,
   "cuda": true,
   "is_letterbox_image":true,

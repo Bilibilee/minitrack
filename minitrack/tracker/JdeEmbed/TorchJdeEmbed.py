@@ -8,8 +8,8 @@ from minitrack.utils.dataset import MutiltaskDataset
 import numpy as np
 
 class TorchJdeEmbed(BaseJdeEmbed):
-    def __init__(self,track_class_names,cfg_path='cfg/jde_cfg.json'):
-        super(TorchJdeEmbed ,self).__init__(track_class_names,cfg_path,'tensor')
+    def __init__(self,track_class_name,abnormal_class_name,cfg_path='cfg/jde_cfg.json'):
+        super(TorchJdeEmbed ,self).__init__(track_class_name,abnormal_class_name,cfg_path,'tensor')
         self.output_names = ['xywh', 'det_conf', 'cls_conf', 'embeddings']
 
     def initialize(self,cfg):

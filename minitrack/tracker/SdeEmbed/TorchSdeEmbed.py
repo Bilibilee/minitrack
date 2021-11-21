@@ -6,10 +6,10 @@ from minitrack.detection import  TorchDetection
 from minitrack.extractor import TorchExtractor
 
 class TorchSdeEmbed(BaseSdeEmbed):
-    def __init__(self,track_class_names,detection=None,extrackor=None):
-        self.detection=detection if detection is not None else TorchDetection()
+    def __init__(self,track_class_name,abnormal_class_name,detection=None,extrackor=None):
+        self.detection=detection if detection is not None else TorchDetection(track_class_name,abnormal_class_name)
         self.extractor=extrackor if extrackor is not None else TorchExtractor()
-        super(TorchSdeEmbed, self).__init__(self.detection, self.extractor, track_class_names)
+        super(TorchSdeEmbed, self).__init__(track_class_name,abnormal_class_name,self.detection, self.extractor)
 
     def get_embeddings(self, results, origin_images):
         image_crops = []
@@ -36,7 +36,7 @@ class TorchSdeEmbed(BaseSdeEmbed):
             for obj in result['track']:
                 obj.feature=embeddings[i].cpu().numpy()
                 i+=1
-            outputs.append(result['track']+result['untrack'])
+            outputs.append(result['track']+result['abnormal']+result['other'])
         return outputs
 
     def get_embed_tid(self, images, tids):

@@ -2,8 +2,8 @@ from minitrack.detection.BaseDetection import BaseDetection
 import onnxruntime as ort
 
 class OnnxDetection(BaseDetection):
-    def __init__(self,cfg_path='cfg/yolov4_cfg.json'):
-        super(OnnxDetection, self).__init__(cfg_path,'ndarray')
+    def __init__(self,track_class_name,abnormal_class_name,cfg_path='cfg/yolov4_cfg.json'):
+        super(OnnxDetection, self).__init__(track_class_name,abnormal_class_name,cfg_path,'ndarray')
 
 
     def initialize(self,cfg):

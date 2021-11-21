@@ -2,13 +2,13 @@ from .BaseTracker import BaseTracker
 from .utils.matching import *
 
 class JdeTracker(BaseTracker):
-    def __init__(self, embed_model,max_iou_distance_first=0.5,max_iou_distance_second=0.7,max_cosine_distance=0.7,max_age=30, n_init=1,budget=30):
-        super(JdeTracker, self).__init__(embed_model,max_age,n_init,budget)
+    def __init__(self, embed_model,max_iou_distance_first=0.5,max_iou_distance_second=0.7,max_cosine_distance=0.7,max_age=30, n_init=1,budget=30,max_save_image_num=3):
+        super(JdeTracker, self).__init__(embed_model,max_age,n_init,budget,max_save_image_num)
 
         self.max_iou_distance_first = max_iou_distance_first
         self.max_iou_distance_second = max_iou_distance_second
         self.max_cosine_distance = max_cosine_distance
-        self.track_class_names = self.embed_model.track_class_names
+
 
     def _match(self, detectobjs):
 

@@ -6,10 +6,10 @@ from minitrack.detection import OnnxDetection
 
 
 class OnnxSdeEmbed(BaseSdeEmbed):
-    def __init__(self, track_class_names,detection=None,extrackor=None):
-        self.detection = detection if detection is not None else OnnxDetection()
+    def __init__(self,track_class_name,abnormal_class_name,detection=None,extrackor=None):
+        self.detection = detection if detection is not None else OnnxDetection(track_class_name,abnormal_class_name)
         self.extractor = extrackor if extrackor is not None else OnnxExtractor()
-        super(OnnxSdeEmbed, self).__init__(self.detection,self.extractor,track_class_names)
+        super(OnnxSdeEmbed, self).__init__(track_class_name,abnormal_class_name,self.detection,self.extractor)
 
     def get_embeddings(self, results, origin_images):
         image_crops = []
@@ -37,7 +37,7 @@ class OnnxSdeEmbed(BaseSdeEmbed):
             for obj in result['track']:
                 obj.feature = embeddings[i]
                 i += 1
-            outputs.append(result['track'] + result['untrack'])
+            outputs.append(result['track'] + result['abnormal']+result['other'])
         return outputs
 
 
