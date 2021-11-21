@@ -58,7 +58,7 @@ class BaseTracker:
     def _match(self,detectobjs):
         raise NotImplementedError
 
-    def track_one_image(self,origin_image,draw=True,detect_abnormal_behavior=True,save_path='./results',right_direction='y-',count_threshold=0.8,ignore_count_num=8):
+    def track_one_image(self,origin_image,draw=True,detect_abnormal_behavior=True,save_path='./results',right_direction='y-',count_threshold=0.7,ignore_count_num=8):
         prediction=self.embed_model.detect_one_image(origin_image, draw=False)
         needtrack_objs=[obj for obj in prediction if obj.feature is not None ]
         unneedtrack_objs=[obj for obj in prediction if obj.feature is None]
@@ -115,29 +115,39 @@ class BaseTracker:
             raise ValueError("right_direcetion must in ['x+','x-','y+','y-']")
         for track in self.tracks:
             x_increase_num=0
+            x_decrease_num=0
             y_increase_num=0
+            y_decrease_num=0
             centers=track.centers
             num_centers=len(centers)
 
             if num_centers < ignore_count_num or track.cur_WrongDirect_save_image_num >= track.max_save_image_num:
                 continue
+            x1, y1, x2, y2 = track.ltrb.astype(np.int32)
+            w=x2-x1
+            h=y2-y1
             for i in range(1,num_centers):
-                if centers[i][0] > centers[i-1][0]:
+                x_diff=centers[i][0] - centers[i-1][0]
+                y_diff=centers[i][1] - centers[i-1][1]
+                if x_diff > 0.03*w:
                     x_increase_num+=1
-                if centers[i][1] > centers[i-1][1]:
-                    y_increase_num+=1
+                elif x_diff<-0.03*w:
+                    x_decrease_num+=1
 
-            x_increase_proportion=x_increase_num/num_centers
-            y_increase_proportion=y_increase_num/num_centers
-            if (right_direction=='x-' and x_increase_proportion > count_threshold ) or \
-               (right_direction=='x+' and 1-x_increase_proportion > count_threshold) or \
-               (right_direction=='y-' and y_increase_proportion > count_threshold )   or \
-               (right_direction=='y+' and 1-y_increase_proportion > count_threshold):
+                if y_diff>0.03*h:
+                    y_increase_num+=1
+                elif y_diff<-0.03*h:
+                    y_decrease_num+=1
+
+            if (right_direction=='x-' and x_increase_num/num_centers > count_threshold ) or \
+               (right_direction=='x+' and x_decrease_num/num_centers > count_threshold) or \
+               (right_direction=='y-' and y_increase_num/num_centers > count_threshold )   or \
+               (right_direction=='y+' and y_decrease_num/num_centers > count_threshold):
 
                 track.cur_WrongDirect_save_image_num += 1
                 save_image_name = save_path + '/' + str_localtime + '_WrongDirect_' + str(track.track_id)+'.jpg'
                 # '%Y_%m_%d_%H_%M_%S_WrongDirect_trackid.jpg'
-                x1, y1, x2, y2 = track.ltrb.astype(np.int32)
+
                 track_class_image = origin_image[y1:y2, x1:x2, :]
                 track_class_image = cv2.cvtColor(track_class_image, cv2.COLOR_RGB2BGR)
                 cv2.imwrite(save_image_name , track_class_image)

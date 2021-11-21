@@ -29,8 +29,7 @@ for i in range(12, 149):
         img = cv2.imread('./results/%d.jpg' % i)
         videowriter.write(img)
 '''
-import time
-localtime = time.localtime(time.time())
-
-stra=time.strftime('%Y_%m_%d_%H_%M_%S',localtime)
-print(stra)
+a=11/38
+print(a)
+b=-11/38
+print(b)

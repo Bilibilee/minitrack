@@ -9,7 +9,7 @@ embed=TorchSdeEmbed('motor','nohelmet')
 track=DeepsortTracker(embed)
 #   调用摄像头
 #   capture=cv2.VideoCapture("1.mp4")
-capture=cv2.VideoCapture("D:/Dataset/indian_cctv_motor_helmet/b3.avi")
+capture=cv2.VideoCapture("D:/Dataset/indian_cctv_motor_helmet/c1.avi")
 fps = 0.0
 frame_id=0
 while(True):
