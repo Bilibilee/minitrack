@@ -1,5 +1,5 @@
 
-'''
+
 from PIL import Image
 
 from minitrack.detection import OnnxDetection,TorchDetection,EvalDetection
@@ -8,12 +8,12 @@ from minitrack.tracker import OnnxSdeEmbed,TorchSdeEmbed,OnnxJdeEmbed,TorchJdeEm
 
 
 
-embed=OnnxSdeEmbed(['motor'])
+embed=OnnxSdeEmbed('motor','nohelmet')
 tracker=DeepsortTracker(embed)
 eval=EvalTracker(tracker)
 
 eval.test_mota(anno_path='dataset/helmet_embed_test_anno.txt')
-
+'''
 import cv2
 import os
 fps = 10
@@ -29,7 +29,3 @@ for i in range(12, 149):
         img = cv2.imread('./results/%d.jpg' % i)
         videowriter.write(img)
 '''
-a=11/38
-print(a)
-b=-11/38
-print(b)

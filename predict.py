@@ -3,7 +3,7 @@ import cv2
 
 from minitrack.detection import TorchDetection
 
-detection = TorchDetection()
+detection = TorchDetection('','')
 
 while True:
     imgname = input('Input image filename:')
